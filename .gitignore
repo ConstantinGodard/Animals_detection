@@ -1,0 +1,19 @@
+# Dataset (reste en local, copié dans Docker au build)
+dataset/
+
+# Python
+venv/
+__pycache__/
+*.pyc
+.env
+
+# Modèles lourds
+*.pkl
+*.pt
+*.pth
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
