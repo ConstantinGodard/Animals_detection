@@ -1,17 +1,19 @@
-import pickle
+import pickle, json
 import numpy as np
 from PIL import Image
 import onnxruntime as ort
 from sklearn.metrics.pairwise import cosine_similarity
 from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import HTMLResponse
-import io, base64
+import io
 
 app = FastAPI()
 
 session = ort.InferenceSession("model.onnx")
 with open("prototypes.pkl", "rb") as f:
     prototypes = pickle.load(f)
+with open("translation.json", "r") as f:
+    translation = json.load(f)
 
 def preprocess(image):
     image = image.resize((224, 224))
@@ -41,4 +43,10 @@ def health():
 async def predict(file: UploadFile = File(...)):
     image = Image.open(io.BytesIO(await file.read())).convert("RGB")
     top5 = get_top5(image)
-    return {"predictions": [{"class": l, "confidence": round(s, 4)} for l, s in top5]}
+    return {"predictions": [
+        {
+            "class": l,
+            "common_name": translation.get(l, l),
+            "confidence": round(s, 4)
+        } for l, s in top5
+    ]}
