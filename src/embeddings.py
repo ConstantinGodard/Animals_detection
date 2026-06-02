@@ -11,7 +11,7 @@ from torchvision import models
 # =========================
 
 DATASET_PATH = "dataset/dataset"
-OUTPUT_FILE = "embeddings.pkl"
+OUTPUT_FILE = "embeddings_test.pkl"
 
 # =========================
 # DEVICE
