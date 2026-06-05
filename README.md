@@ -14,6 +14,14 @@ The dataset used in this project is sourced from Kaggle: [Animals141](https://ww
 
 ## Commands to Run
 
+### Docker Image
+
+Pull the image from GitHub Container Registry:
+
+```bash
+docker pull ghcr.io/constantingodard/animals_detection:latest
+```
+
 ### Prerequisites
 ```bash
 python3.11 -m venv venv
@@ -64,4 +72,3 @@ curl -X POST http://localhost:8000/predict -F "file=@your_image.jpg"
 
 The prototypical network with MobileNetV2 embeddings achieves strong accuracy on the support set across all 150 classes. Because the backbone was pre-trained on ImageNet (which includes a large variety of animal species) the extracted features are highly discriminative even without any fine-tuning. 
 
-## Repository Structure
