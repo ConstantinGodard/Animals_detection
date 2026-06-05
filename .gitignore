@@ -1,5 +1,5 @@
-# Dataset (reste en local, copié dans Docker au build)
-dataset/
+# Dataset 
+# dataset/
 
 # Python
 venv/
