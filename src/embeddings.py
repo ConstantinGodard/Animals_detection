@@ -11,7 +11,7 @@ from torchvision import models
 # =========================
 
 DATASET_PATH = "dataset/dataset"
-OUTPUT_FILE = "embeddings_test.pkl"
+OUTPUT_FILE = "embeddings_densenet.pkl"
 
 # =========================
 # DEVICE
@@ -23,8 +23,8 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # MODEL
 # =========================
 
-# Load pretrained MobileNetV2
-model = models.mobilenet_v2(weights=models.MobileNet_V2_Weights.DEFAULT)
+# Load pretrained DenseNet121
+model = models.densenet121(weights=models.DenseNet121_Weights.DEFAULT)
 
 # Remove classifier head
 model = model.features
